@@ -1,16 +1,5 @@
 import { motion } from 'framer-motion';
-import {
-  ShoppingCart,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Facebook,
-  Instagram,
-  Twitter,
-  Tag,
-  Gift
-} from 'lucide-react';
+import { ShoppingCart, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Tag, Gift } from 'lucide-react';
 
 import offer1 from './assets/offer-1.jpeg';
 import offer3 from './assets/offer3.jpeg';
@@ -128,7 +117,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Your One-Stop Wholesale Destination
+           Retail quality groceries at wholesale prices
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto"
@@ -136,7 +125,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Quality products at wholesale prices, serving Jalgaon since 1990
+           Serving Jalgaon since 1990
           </motion.p>
         </div>
       </section>
