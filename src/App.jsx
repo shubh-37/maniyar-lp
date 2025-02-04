@@ -1,9 +1,21 @@
 import { motion } from 'framer-motion';
-import { ShoppingCart, Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter, Tag, Gift } from 'lucide-react';
+import {
+  ShoppingCart,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Facebook,
+  Instagram,
+  Twitter,
+  Tag,
+  Gift,
+  MailIcon
+} from 'lucide-react';
 
 import offer1 from './assets/offer-1.jpeg';
 import offer3 from './assets/offer3.jpeg';
-
+import logo from './assets/logo.jpeg';
 const valueProps = [
   {
     id: 1,
@@ -33,21 +45,24 @@ const stores = [
     location: 'Bhusaval Road',
     address: 'Next To Hotel Gaurav, Bhusaval Road, Near Kalika Mata Mandir, Jalgaon - 425003',
     phone: '+91 9158884902',
-    timings: '10 AM - 6 PM'
+    timings: '9:30 AM - 8:30 PM',
+    email: 'ppp@maniyars.com'
   },
   {
     id: 2,
     location: 'Gandhinagar',
     address: '16, Gandhinagar, Opp Stadium, Near New Bus Stand, Jalgaon - 425001',
     phone: '+91 9923009364',
-    timings: '10 AM - 6 PM'
+    timings: '9:30 AM - 8:30 PM',
+    email: 'ppp@maniyars.com'
   },
   {
     id: 3,
     location: 'Mahabal',
     address: 'Aditya Plaza Building, Gadgebaba Chowk, Jalgaon - 425001',
     phone: '+91 7397979398',
-    timings: '10 AM - 6 PM'
+    timings: '9:30 AM - 8:30 PM',
+    email: 'ppp@maniyars.com'
   }
 ];
 
@@ -87,25 +102,15 @@ export default function Page() {
 
         {/* Header */}
         <header className="relative z-10 container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="flex flex-col md:flex-row items-center justify-center">
             <motion.img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-9rd4c5th-rJd2vT5Ss5EYa2gKjb4nwaWGIhduxg.png"
+              src={logo}
               alt="Maniyar Wholesale Supermarket"
-              className="h-24 md:h-28"
+              className="h-30 md:h-28 w-44"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             />
-            <div className="mt-4 md:mt-0 flex flex-col items-end gap-2">
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <span>+91 8806777711</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <span>contact@maniyarsupermarket.com</span>
-              </div>
-            </div>
           </div>
         </header>
 
@@ -117,7 +122,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-           Retail quality groceries at wholesale prices
+            Best quality groceries in retail quantity at wholesale prices
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto"
@@ -125,7 +130,7 @@ export default function Page() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-           Serving Jalgaon since 1990
+            Serving Jalgaon with love and dedication, since 125 years.
           </motion.p>
         </div>
       </section>
@@ -238,9 +243,13 @@ export default function Page() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              Founded in 1990, Maniyar Wholesale Supermarket has been serving the Jalgaon community with quality
+              {/* Founded in 1990, Maniyar Wholesale Supermarket has been serving the Jalgaon community with quality
               products at wholesale prices. Our commitment to customer satisfaction and quality assurance has made us
-              the preferred choice for bulk purchases in the region.
+              the preferred choice for bulk purchases in the region. */}
+              Tracing its roots in the wholesale business circa 1900... Maniyar Group ventured into Retail Supermarkets
+              in 2003, in Jalgaon and Aurangabad. Our deep knowledge of the grocery domain, coupled with our commitment
+              to customer satisfaction, quality assurance and above all Ethical Business, has made us the preferred
+              choice for Customers in the region.
             </motion.p>
             <motion.p
               className="text-gray-600"
@@ -250,8 +259,19 @@ export default function Page() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              With three strategic locations across Jalgaon, we ensure convenient access to our wide range of products
-              for all our valued customers.
+              With 4 strategic locations across Jalgaon and Ch. Sambhajinagar, we ensure convenient access to our wide
+              range of products for all our valued customers.
+            </motion.p>
+            <motion.p
+              className="text-gray-600"
+              variants={fadeInVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              Unlike most of the retail industry which gives offers on certain days only, OUR most Unique advantage is
+              our policy of giving the best lowest prices and offers 365 DAYS a year.
             </motion.p>
           </div>
         </div>
@@ -291,6 +311,10 @@ export default function Page() {
                     <span>{store.phone}</span>
                   </p>
                   <p className="flex items-center gap-2">
+                    <MailIcon className="w-5 h-5" />
+                    <span>{store.email}</span>
+                  </p>
+                  <p className="flex items-center gap-2">
                     <Clock className="w-5 h-5" />
                     <span>{store.timings}</span>
                   </p>
@@ -308,14 +332,15 @@ export default function Page() {
             <div className="mb-8 md:mb-0">
               <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
               <div className="flex space-x-6">
-                <a href="#" className="hover:text-gray-300 transition-colors">
+                <a
+                  href="https://www.facebook.com/maniyarwholesale"
+                  className="hover:text-gray-300 transition-colors"
+                  target="_blank"
+                >
                   <Facebook className="w-6 h-6" />
                 </a>
-                <a href="#" className="hover:text-gray-300 transition-colors">
-                  <Instagram className="w-6 h-6" />
-                </a>
-                <a href="#" className="hover:text-gray-300 transition-colors">
-                  <Twitter className="w-6 h-6" />
+                <a href="https://www.instagram.com/maniyarwholesale/" className="hover:text-gray-300 transition-colors">
+                  <Instagram className="w-6 h-6" target="_blank" />
                 </a>
               </div>
             </div>
