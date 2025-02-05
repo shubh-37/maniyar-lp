@@ -1,27 +1,22 @@
 import { motion } from 'framer-motion';
-import {
-  ShoppingCart,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Facebook,
-  Instagram,
-  Twitter,
-  Tag,
-  Gift,
-  MailIcon
-} from 'lucide-react';
+import { ShoppingCart, Phone, MapPin, Clock, Facebook, Instagram, Tag, Gift, MailIcon } from 'lucide-react';
 
 import offer1 from './assets/offer-1.jpeg';
 import offer3 from './assets/offer3.jpeg';
 import logo from './assets/logo.jpeg';
+import Marquee from 'react-fast-marquee';
+import image1 from './assets/img-1.jpg';
+import image2 from './assets/img-2.jpg';
+import image3 from './assets/img-3.jpg';
+import image4 from './assets/img-4.jpeg';
+import image5 from './assets/img-5.jpeg';
+
+const imageUrls = [image1, image2, image3, image4, image5];
 const valueProps = [
   {
     id: 1,
     title: 'Wholesale Pricing',
-    description:
-      'Get the best prices in town with our wholesale rates that make bulk shopping more affordable than ever',
+    description: 'Get the best prices in town with our wholesale rates that make shopping more affordable than ever',
     icon: ShoppingCart
   },
   {
@@ -79,7 +74,7 @@ const offers = [
   {
     id: 3,
     title: 'Groceries discount',
-    description: 'Shop the best pulses in whole Jalgaon at our store!',
+    description: 'Shop for the best wheat, rice and, pulses in whole Jalgaon at our store!',
     icon: Gift,
     discount: 'Special Discounts',
     color: 'bg-green-100 text-green-600',
@@ -97,8 +92,27 @@ export default function Page() {
   return (
     <div className="font-sans text-gray-900">
       {/* Hero Section with Header */}
-      <section className="relative bg-[#0B4619] text-white min-h-[600px]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B4619]/90 to-[#0B4619]" />
+      <section className="relative text-white min-h-[600px]">
+        {/* Background Images */}
+        <div className="absolute inset-0 flex">
+          <div
+            className="w-1/2 bg-cover bg-center opacity-30"
+            style={{
+              backgroundImage:
+                'url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-02-04%20at%2017.05.41-6cqLAk37qsAJttN4aQp8izZCx5tqy3.jpeg)'
+            }}
+          />
+          <div
+            className="w-1/2 bg-cover bg-center opacity-30"
+            style={{
+              backgroundImage:
+                'url(https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-02-04%20at%2017.05.18-g50YFZQJt7yZOq8NMsIIAoAciueEJk.jpeg)'
+            }}
+          />
+        </div>
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 " />
 
         {/* Header */}
         <header className="relative z-10 container mx-auto px-4 py-6">
@@ -106,7 +120,7 @@ export default function Page() {
             <motion.img
               src={logo}
               alt="Maniyar Wholesale Supermarket"
-              className="h-30 md:h-28 w-44"
+              className="md:h-28"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -115,7 +129,7 @@ export default function Page() {
         </header>
 
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 pt-16 pb-24 text-center">
+        <div className="relative z-10 container mx-auto px-4 pt-16 pb-24 text-center text-[#0B4619]">
           <motion.h1
             className="text-4xl md:text-6xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
@@ -125,7 +139,7 @@ export default function Page() {
             Best quality groceries in retail quantity at wholesale prices
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl  max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -145,7 +159,7 @@ export default function Page() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            Why Choose Maniyar Wholesale
+            Why Choose Maniyar Wholesale Supermarket
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {valueProps.map((prop, index) => (
@@ -189,8 +203,7 @@ export default function Page() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Discover unbeatable deals and savings on our premium wholesale products. Don't miss out on these
-            limited-time offers!
+            Discover unbeatable deals and savings on our premium products. Don't miss out on these great offers!
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -222,7 +235,43 @@ export default function Page() {
         </div>
       </section>
 
-      {/* About Us Section */}
+      <div style={{ width: '100%', overflow: 'hidden', padding: '10px' }}>
+        <motion.h2
+          className="text-3xl font-bold text-[#0B4619] mb-6 text-center"
+          variants={fadeInVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          Our Products
+        </motion.h2>
+        <Marquee speed={60} pauseOnHover gradient={false} style={{ width: '100%' }}>
+          {imageUrls.map((src, index) => (
+            <div
+              key={index}
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '300px',
+                height: '300px',
+                margin: '0 10px'
+              }}
+            >
+              <img
+                src={src}
+                alt={`Marquee Image ${index + 1}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  borderRadius: '10px'
+                }}
+              />
+            </div>
+          ))}
+        </Marquee>
+      </div>
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -247,9 +296,9 @@ export default function Page() {
               products at wholesale prices. Our commitment to customer satisfaction and quality assurance has made us
               the preferred choice for bulk purchases in the region. */}
               Tracing its roots in the wholesale business circa 1900... Maniyar Group ventured into Retail Supermarkets
-              in 2003, in Jalgaon and Aurangabad. Our deep knowledge of the grocery domain, coupled with our commitment
-              to customer satisfaction, quality assurance and above all Ethical Business, has made us the preferred
-              choice for Customers in the region.
+              in 2003, in <b>Jalgaon and Ch. Sambhajinagar (Aurangabad)</b>. Our deep knowledge of the grocery domain,
+              coupled with our commitment to customer satisfaction, quality assurance and above all Ethical Business,
+              has made us the preferred choice for Customers in the region.
             </motion.p>
             <motion.p
               className="text-gray-600"
@@ -259,8 +308,8 @@ export default function Page() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              With 4 strategic locations across Jalgaon and Ch. Sambhajinagar, we ensure convenient access to our wide
-              range of products for all our valued customers.
+              With 4 strategic locations across <b>Jalgaon and Ch. Sambhajinagar (Aurangabad)</b>, we ensure convenient
+              access to our wide range of products for all our valued customers.
             </motion.p>
             <motion.p
               className="text-gray-600"
@@ -331,7 +380,7 @@ export default function Page() {
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-8 md:mb-0">
               <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
-              <div className="flex space-x-6">
+              <div className="flex justify-center space-x-6">
                 <a
                   href="https://www.facebook.com/maniyarwholesale"
                   className="hover:text-gray-300 transition-colors"
